@@ -39,9 +39,10 @@
  normal_color：文字普通状态颜色
  highlighted_color：文字点击状态颜色，可为nil
  cellBgColor：选项框背景颜色
+ cellLineColor:选择框分隔线颜色
  */
 - (id)initWithFrame:(CGRect)frame titles:(NSArray*)titles cancal:(NSString*)cancal normal_color:(UIColor*)normalColor highlighted_color:(UIColor*)color;
-- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color cellBgColor:(UIColor*)bgColor;
+- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color cellBgColor:(UIColor*)bgColor cellLineColor:(UIColor*)lineColor;
 
 - (void)showView;//执行出现动画，初始化后需要执行
 - (void)hideView;//执行隐藏动画

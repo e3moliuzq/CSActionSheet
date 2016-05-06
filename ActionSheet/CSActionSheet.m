@@ -11,10 +11,10 @@
 @implementation CSActionSheet
 
 - (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color {
-    return [self initWithFrame:frame titles:titles cancal:cancal normal_color:normalColor highlighted_color:color cellBgColor:[UIColor whiteColor]];
+    return [self initWithFrame:frame titles:titles cancal:cancal normal_color:normalColor highlighted_color:color cellBgColor:[UIColor whiteColor] cellLineColor:[UIColor colorWithRed:220.f/255.f green:220.f/255.f blue:220.f/255.f alpha:1]];
 }
 
-- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color cellBgColor:(UIColor*)bgColor {
+- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color cellBgColor:(UIColor*)bgColor cellLineColor:(UIColor *)lineColor {
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -33,13 +33,13 @@
         [close_btn addTarget:self action:@selector(closeBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:close_btn];
         
-        [self initShowView:cancal normal_color:normalColor highlighted_color:color bgColor:bgColor];
+        [self initShowView:cancal normal_color:normalColor highlighted_color:color bgColor:bgColor lineColor:lineColor];
     }
     
     return self;
 }
 
-- (void)initShowView:(NSString*)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color bgColor:(UIColor*)bgColor {
+- (void)initShowView:(NSString*)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color bgColor:(UIColor*)bgColor lineColor:(UIColor*)lineColor {
     show_view = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 0)];
     [show_view setBackgroundColor:[UIColor clearColor]];
     [self addSubview:show_view];
@@ -67,7 +67,7 @@
         
         if (i != 0) {
             UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*50-0.5, show_view.frame.size.width, 1)];
-            [line1 setBackgroundColor:[UIColor colorWithRed:220.f/255.f green:220.f/255.f blue:220.f/255.f alpha:1]];
+            [line1 setBackgroundColor:lineColor];
             [picker_bg addSubview:line1];
         }
     }

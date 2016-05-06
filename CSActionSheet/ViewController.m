@@ -18,9 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    CGSize winsize = [[UIScreen mainScreen] bounds].size;
+    
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn1 setFrame:CGRectMake(30, winsize.height-200, 230, 80)];
+    [btn1 setTitle:@"show actionsheet base bg color" forState:UIControlStateNormal];
+    btn1.titleLabel.numberOfLines = 0;
+    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn1 setBackgroundColor:[UIColor redColor]];
+    [btn1 addTarget:self action:@selector(btn0Touched) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
+    
     
     UIButton *btn0 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn0 setFrame:CGRectMake(30, 180, 230, 80)];
+    [btn0 setFrame:CGRectMake(30, winsize.height-100, 230, 80)];
     [btn0 setTitle:@"show actionsheet" forState:UIControlStateNormal];
     [btn0 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn0 setBackgroundColor:[UIColor redColor]];
@@ -34,6 +45,19 @@
 }
 
 - (void)btnTouched {
+    if (as_view) {
+        [as_view removeFromSuperview];
+        as_view = nil;
+    }
+    
+    CGSize winsize = [[UIScreen mainScreen] bounds].size;
+    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1] cellBgColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] cellLineColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1]];
+    as_view.delegate = self;
+    [self.view addSubview:as_view];
+    [as_view showView];
+}
+
+- (void)btn0Touched {
     if (as_view) {
         [as_view removeFromSuperview];
         as_view = nil;
