@@ -21,6 +21,8 @@
     
     UIButton *close_btn;
     
+    UIButton *cancal_btn;
+    
     BOOL isInAction;
     
     NSArray *titles_array;
@@ -40,9 +42,15 @@
  highlighted_color：文字点击状态颜色，可为nil
  cellBgColor：选项框背景颜色
  cellLineColor:选择框分隔线颜色
+ tips：提示文字，可换行，可为空，为空则隐藏模块
+ tipsColor：提示文字颜色，可为空，为空则为默认颜色
+ 
  */
 - (id)initWithFrame:(CGRect)frame titles:(NSArray*)titles cancal:(NSString*)cancal normal_color:(UIColor*)normalColor highlighted_color:(UIColor*)color;
-- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color cellBgColor:(UIColor*)bgColor cellLineColor:(UIColor*)lineColor;
+- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color tips:(NSString*)tips tipsColor:(UIColor*)tipsColor;
+- (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color tips:(NSString*)tips tipsColor:(UIColor*)tipsColor cellBgColor:(UIColor*)bgColor cellLineColor:(UIColor*)lineColor;
+
+- (void)setCancalLabelColor:(UIColor*)color highlightedColor:(UIColor*)highColor;//设置取消按钮的颜色，highColor可为空
 
 - (void)showView;//执行出现动画，初始化后需要执行
 - (void)hideView;//执行隐藏动画

@@ -51,7 +51,7 @@
     }
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
-    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1] cellBgColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] cellLineColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1]];
+    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1] tips:@"请选择方式\n点击其他空白处收起" tipsColor:[UIColor whiteColor] cellBgColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] cellLineColor:[UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1]];
     as_view.delegate = self;
     [self.view addSubview:as_view];
     [as_view showView];
@@ -65,6 +65,8 @@
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
     as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1]];
+    [as_view setCancalLabelColor:[UIColor redColor] highlightedColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
+    
     as_view.delegate = self;
     [self.view addSubview:as_view];
     [as_view showView];
