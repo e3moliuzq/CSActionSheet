@@ -9,13 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol CSActionSheetViewDelegate <NSObject>
-
-@optional
-- (void)csActionSheetSure:(id)sender chooseIndex:(int)index;//选择后执行的delegate，index为选择值：cancal为0，其他数据从1开始依次递增
-- (void)csActionSheetClose:(id)sender;//隐藏动画执行完成的delegate
-@end
-
 @interface CSActionSheet : UIView {
     UIView *show_view;
     
@@ -27,7 +20,9 @@
     
     NSArray *titles_array;
 }
-@property (nonatomic,weak) id<CSActionSheetViewDelegate> delegate;
+
+@property (readwrite, copy) void (^close) (id sender);
+@property (readwrite, copy) void (^action) (int index, id sender);
 
 /**
  iOS自带的UIActionSheet不能改变颜色，故写这个
@@ -52,7 +47,7 @@
 
 - (void)setCancalLabelColor:(UIColor*)color highlightedColor:(UIColor*)highColor;//设置取消按钮的颜色，highColor可为空
 
-- (void)showView;//执行出现动画，初始化后需要执行
+- (void)showView:(void (^) (int index, id sender))action close:(void (^) (id sender))close;//执行出现动画，初始化后需要执行
 - (void)hideView;//执行隐藏动画
 - (BOOL)viewIsInAction;//判断当前是否在动画过程中
 

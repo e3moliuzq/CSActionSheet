@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CSActionSheet.h"
 
-@interface ViewController : UIViewController <CSActionSheetViewDelegate> {
+@interface ViewController : UIViewController {
     CSActionSheet *as_view;
 }
 

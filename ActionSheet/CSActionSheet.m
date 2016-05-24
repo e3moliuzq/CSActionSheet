@@ -144,9 +144,9 @@
 
 - (void)sureBtnTouched:(id)sender {
     UIButton *btn = (UIButton*)sender;
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(csActionSheetSure:chooseIndex:)]) {
-        [self.delegate csActionSheetSure:self chooseIndex:(int)btn.tag];
+
+    if (self.action) {
+        self.action((int)btn.tag, self);
     }
 }
 
@@ -158,7 +158,10 @@
     [self hideView];
 }
 
-- (void)showView {
+- (void)showView:(void (^)(int, id))action close:(void (^)(id))close {
+    self.action = action;
+    self.close = close;
+    
     if (isInAction) {
         return;
     }
@@ -191,8 +194,8 @@
         if (finished) {
             isInAction = NO;
             
-            if (self.delegate && [self.delegate respondsToSelector:@selector(csActionSheetClose:)]) {
-                [self.delegate csActionSheetClose:self];
+            if (self.close) {
+                self.close(self);
             }
         }
     }];
