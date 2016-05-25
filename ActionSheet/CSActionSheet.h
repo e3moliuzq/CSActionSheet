@@ -21,8 +21,8 @@
     NSArray *titles_array;
 }
 
-@property (readwrite, copy) void (^close) (id sender);
-@property (readwrite, copy) void (^action) (int index, id sender);
+@property (readwrite, copy) void (^close) (id sender);//结束hideView动画时
+@property (readwrite, copy) void (^action) (int index, id sender);//点击选项时
 
 /**
  iOS自带的UIActionSheet不能改变颜色，故写这个
