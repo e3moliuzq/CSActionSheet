@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CSActionSheet.h"
+#import "CSActionPicker.h"
 
 @interface ViewController : UIViewController {
     CSActionSheet *as_view;
+    CSActionPicker *action_picker;
 }
 
 

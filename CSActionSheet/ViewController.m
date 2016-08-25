@@ -18,7 +18,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.title = @"CSActionSheet&Picker";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
+    
+    
+    
+    UIButton *save_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [save_btn setFrame:CGRectMake(0, 0, 90, 30)];
+    [save_btn setTitle:@"ActionPicker" forState:UIControlStateNormal];
+    [save_btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [save_btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [save_btn setBackgroundColor:[UIColor clearColor]];
+    [save_btn addTarget:self action:@selector(showActionPicker) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:save_btn];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: rightItem, nil]];
+    
+    
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setFrame:CGRectMake(30, winsize.height-200, 230, 80)];
@@ -42,6 +60,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showActionPicker {
+    if (as_view) {
+        [as_view removeFromSuperview];
+        as_view = nil;
+    }
+    if (action_picker) {
+        [action_picker hideView];
+        return;
+    }
+    
+    CGSize winsize = [[UIScreen mainScreen] bounds].size;
+    NSArray *array = [NSArray arrayWithObjects: @"所有条件", @"已完成", @"未完成", @"有附件", @"有定时提醒", @"有密码", nil];
+    action_picker = [[CSActionPicker alloc] initWithFrame:CGRectMake(0, 64, winsize.width, winsize.height) titles:array normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1]];
+    [self.view addSubview:action_picker];
+    [action_picker showView:^(int index, id sender) {
+        NSLog(@"choose_index = %d",index);
+        
+        [action_picker hideView];
+    } close:^(id sender) {
+        [action_picker removeFromSuperview];
+        action_picker = nil;
+    }];
 }
 
 - (void)btnTouched {

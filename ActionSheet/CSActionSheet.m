@@ -8,6 +8,9 @@
 
 #import "CSActionSheet.h"
 
+#define SYS_CELL_HEIGHT             50.f
+#define SYS_CELL_LABEL_SIZE         14.f
+
 @implementation CSActionSheet
 
 - (id)initWithFrame:(CGRect)frame titles:(NSArray *)titles cancal:(NSString *)cancal normal_color:(UIColor *)normalColor highlighted_color:(UIColor *)color {
@@ -61,7 +64,6 @@
             [label setTextColor:[UIColor grayColor]];
         }
         [label setTextAlignment:NSTextAlignmentCenter];
-        label.lineBreakMode = UILineBreakModeCharacterWrap;
         label.numberOfLines = 0;
         [label setFont:[UIFont systemFontOfSize:13]];
         [label setBackgroundColor:[UIColor clearColor]];
@@ -84,46 +86,46 @@
     }
     
     
-    UIImageView *picker_bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, picker_height, show_view.frame.size.width, titles_array.count*50)];
+    UIImageView *picker_bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, picker_height, show_view.frame.size.width, titles_array.count*SYS_CELL_HEIGHT)];
     [picker_bg setBackgroundColor:bgColor];
     [show_view addSubview:picker_bg];
     
     for (int i=0; i<titles_array.count; i++) {
         NSString *title = [titles_array objectAtIndex:i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setFrame:CGRectMake(0, picker_height+i*50, picker_bg.frame.size.width, 50)];
+        [btn setFrame:CGRectMake(0, picker_height+i*SYS_CELL_HEIGHT, picker_bg.frame.size.width, SYS_CELL_HEIGHT)];
         [btn setTitle:title forState:UIControlStateNormal];
         [btn setTitleColor:normalColor forState:UIControlStateNormal];
         if (color) {
             [btn setTitleColor:color forState:UIControlStateHighlighted];
         }
-        [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+        [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:SYS_CELL_LABEL_SIZE]];
         [btn setBackgroundColor:[UIColor clearColor]];
         [btn addTarget:self action:@selector(sureBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTag:i+1];
         [show_view addSubview:btn];
         
         if (i != 0) {
-            UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*50-0.5, show_view.frame.size.width, 1)];
+            UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*SYS_CELL_HEIGHT-0.5, show_view.frame.size.width, 1)];
             [line1 setBackgroundColor:lineColor];
             [picker_bg addSubview:line1];
         }
     }
     
-    picker_height += titles_array.count * 50;
+    picker_height += titles_array.count * SYS_CELL_HEIGHT;
     
-    UIImageView *cancal_bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, picker_height+5, show_view.frame.size.width, 50)];
+    UIImageView *cancal_bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, picker_height+5, show_view.frame.size.width, SYS_CELL_HEIGHT)];
     [cancal_bg setBackgroundColor:bgColor];
     [show_view addSubview:cancal_bg];
     
     cancal_btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cancal_btn setFrame:CGRectMake(0, picker_height+5, cancal_bg.frame.size.width, 50)];
+    [cancal_btn setFrame:CGRectMake(0, picker_height+5, cancal_bg.frame.size.width, SYS_CELL_HEIGHT)];
     [cancal_btn setTitle:cancal forState:UIControlStateNormal];
     [cancal_btn setTitleColor:normalColor forState:UIControlStateNormal];
     if (color) {
         [cancal_btn setTitleColor:color forState:UIControlStateHighlighted];
     }
-    [cancal_btn.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+    [cancal_btn.titleLabel setFont:[UIFont boldSystemFontOfSize:SYS_CELL_LABEL_SIZE]];
     [cancal_btn setBackgroundColor:[UIColor clearColor]];
     [cancal_btn addTarget:self action:@selector(sureBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
     cancal_btn.tag = 0;
