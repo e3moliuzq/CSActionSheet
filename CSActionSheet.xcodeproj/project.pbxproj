@@ -15,6 +15,7 @@
 		180D5AAA1CDB2C9A00FFF729 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180D5AA81CDB2C9A00FFF729 /* LaunchScreen.storyboard */; };
 		180D5AB41CDB2DA600FFF729 /* CSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D5AB31CDB2DA600FFF729 /* CSActionSheet.m */; };
 		18D26F3A1D6E8A47002FA639 /* CSActionPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D26F391D6E8A47002FA639 /* CSActionPicker.m */; };
+		18D26F411D6E9597002FA639 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 18D26F401D6E9597002FA639 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		180D5AB31CDB2DA600FFF729 /* CSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSActionSheet.m; sourceTree = "<group>"; };
 		18D26F381D6E8A47002FA639 /* CSActionPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSActionPicker.h; sourceTree = "<group>"; };
 		18D26F391D6E8A47002FA639 /* CSActionPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSActionPicker.m; sourceTree = "<group>"; };
+		18D26F401D6E9597002FA639 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		180D5A8E1CDB2C9A00FFF729 = {
 			isa = PBXGroup;
 			children = (
+				18D26F401D6E9597002FA639 /* README.md */,
 				180D5A991CDB2C9A00FFF729 /* CSActionSheet */,
 				180D5A981CDB2C9A00FFF729 /* Products */,
 			);
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D26F411D6E9597002FA639 /* README.md in Sources */,
 				180D5AA21CDB2C9A00FFF729 /* ViewController.m in Sources */,
 				180D5A9F1CDB2C9A00FFF729 /* AppDelegate.m in Sources */,
 				18D26F3A1D6E8A47002FA639 /* CSActionPicker.m in Sources */,
