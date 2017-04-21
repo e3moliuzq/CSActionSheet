@@ -74,7 +74,12 @@
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
     NSArray *array = [NSArray arrayWithObjects: @"所有条件", @"已完成", @"未完成", @"有附件", @"有定时提醒", @"有密码", nil];
-    action_picker = [[CSActionPicker alloc] initWithFrame:CGRectMake(0, 64, winsize.width, winsize.height) titles:array normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1]];
+    action_picker = [[CSActionPicker alloc] initWithFrame:CGRectMake(0, 64, winsize.width, winsize.height) cellX:winsize.width/3*2 cellSize:CGSizeMake(winsize.width/3, 30) titles:array normalColor:nil highlightedColor:nil fontSize:10 cellBgColor:nil cellLineColor:nil];
+    [action_picker setShadeColor:[UIColor colorWithWhite:0 alpha:0.2]];
+//    [action_picker setNormalColor:[UIColor greenColor] highlightColor:[UIColor darkGrayColor]];
+//    [action_picker setBgColor:[UIColor lightGrayColor]];
+//    [action_picker setLineColor:[UIColor whiteColor]];
+//    [action_picker setFontSize:10];
     [self.view addSubview:action_picker];
     [action_picker showView:^(int index, id sender) {
         NSLog(@"choose_index = %d",index);
@@ -93,7 +98,8 @@
     }
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
-    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1] tips:@"请选择方式\n点击其他空白处收起" tipsColor:[UIColor whiteColor] cellBgColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] cellLineColor:[UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1]];
+
+    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" tips:@"请选择方式\n点击其他空白处收起"];
     [self.view addSubview:as_view];
     [as_view showView:^(int index, id sender) {
         NSLog(@"choose_index = %d",index);
@@ -117,8 +123,8 @@
     }
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
-    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", nil] cancal:@"取消" normal_color:[UIColor colorWithRed:0 green:0.7 blue:0.1 alpha:1] highlighted_color:[UIColor colorWithRed:0 green:0.5 blue:0.1 alpha:1]];
-    [as_view setCancalLabelColor:[UIColor redColor] highlightedColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
+    as_view = [[CSActionSheet alloc] initWithFrame:CGRectMake(0, 0, winsize.width, winsize.height) cellX:0 cellSize:CGSizeMake(winsize.width, -1) titles:[NSArray arrayWithObjects: @"拍照", @"从手机相册选择", @"拍照", @"从手机相册选择", @"拍照", @"从手机相册选择", @"拍照", @"从手机相册选择", nil] normalColor:[UIColor greenColor] highlightColor:[UIColor darkGrayColor] cancal:@"取消" cancalNormalColor:[UIColor redColor] cancalHighlightColor:[UIColor redColor] fontSize:-1 tips:@"test info" tipsColor:[UIColor blueColor] tipsFontSize:-1 cellBgColor:nil cellLineColor:nil];
+    
     [self.view addSubview:as_view];
     [as_view showView:^(int index, id sender) {
         NSLog(@"choose_index = %d",index);
